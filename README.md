@@ -51,20 +51,34 @@ Pour chaque exercice :
 #### Objectif : Implémenter une recherche en temps réel
 
 - [ ] 1.1 Modifier le composant ProductSearch pour utiliser la recherche
+      Mise à jour du composant ProductSearch pour permettre à l'utilisateur de saisir un terme de recherche. 
+      Le terme de recherche est transmis du composant enfant ProductSearch au composant parent App via les props. 
+      Utilisation de la fonction onChange sur l'élément <input> pour mettre à jour la valeur du searchTerm à chaque modification du champ.
 - [ ] 1.2 Implémenter le debounce sur la recherche
+      Implementation debounce pour retarder l'execution de la mise à jour de l'état searchItem après un delai de 1s, pour éviter déclenchement de la rechercher pour chaque caractère saisi.
 - [ ] 1.3 Documenter votre solution ici
-
+      - Modification du composant ProductSearch : Le composant ProductSearch permet de saisir un terme de recherche. La valeur du champ de recherche est synchronisée avec l'état searchTerm du parent via les props. Chaque changement dans le champ met à jour cet état.
+      -Implémentation du debounce avec setTimeout : Pour éviter de déclencher une recherche trop fréquemment, j'ai implémenté un mécanisme de debounce dans ProductSearch. Chaque fois que l'utilisateur saisit un terme, un setTimeout est lancé pour attendre 1s avant de mettre à jour le terme de recherche. Si un autre caractère est saisi avant la fin du délai, le setTimeout précédent est annulé et un nouveau délai commence.
+      -Utilisation de clearTimeout : Cette logique permet d'annuler le précédent délai à chaque modification dans le champ de recherche, garantissant ainsi que la recherche ne se déclenche que lorsque l'utilisateur cesse de taper pendant un certain temps.
 _Votre réponse pour l'exercice 1 :_
 ```
+Code dans ProductSearch :
+debouncedSearchTerm : Un état local est utilisé pour conserver temporairement le terme de recherche pendant que l'utilisateur tape.
+useEffect : Lorsqu'un utilisateur tape quelque chose, un setTimeout est mis en place. Si l'utilisateur continue à taper, l'ancien setTimeout est annulé, et un nouveau est créé. Cela garantit que la mise à jour du terme de recherche dans le composant parent n'a lieu qu'après une période d'inactivité de 1 seconde.
+clearTimeout : Cette fonction est utilisée pour annuler les appels précédents et éviter que plusieurs recherches soient effectuées pendant que l'utilisateur tape.
+ProductList
+Le composant ProductList affiche les produits filtrés en fonction du terme de recherche. La recherche est effectuée sur le titre du produit, et seuls les produits dont le titre contient le terme de recherche sont affichés.
+
+Code dans ProductList :
+Filtrage des produits : Le tableau des produits est filtré en fonction du searchTerm passé par le composant parent (App).
+
+Code dans App :
+État searchTerm : Le terme de recherche est stocké dans l'état global (searchTerm) et est passé comme prop aux composants ProductSearch et ProductList.
+
+```
 Expliquez votre solution ici
-1.1 Mise à jour du composant ProductSearch pour permettre à l'utilisateur de saisir un terme de recherche. 
-Le terme de recherche est transmis du composant enfant ProductSearch au composant parent App via les props. 
-Utilisation de la fonction onChange sur l'élément <input> pour mettre à jour la valeur du searchTerm à chaque modification du champ.
-1.2 Implementation debounce pour retarder l'execution de la mise à jour de l'état searchItem après un delai de 1s, pour éviter déclenchement de la rechercher pour chaque caractère saisi.
+1.2 
 1.3
-   - Modification du composant ProductSearch : Le composant ProductSearch permet de saisir un terme de recherche. La valeur du champ de recherche est synchronisée avec l'état searchTerm du parent via les props. Chaque changement dans le champ met à jour cet état.
-   -Implémentation du debounce avec setTimeout : Pour éviter de déclencher une recherche trop fréquemment, j'ai implémenté un mécanisme de debounce dans ProductSearch. Chaque fois que l'utilisateur saisit un terme, un setTimeout est lancé pour attendre 500ms avant de mettre à jour le terme de recherche. Si un autre caractère est saisi avant la fin du délai, le setTimeout précédent est annulé et un nouveau délai commence.
-   -Utilisation de clearTimeout : Cette logique permet d'annuler le précédent délai à chaque modification dans le champ de recherche, garantissant ainsi que la recherche ne se déclenche que lorsque l'utilisateur cesse de taper pendant un certain temps.
 [Ajoutez vos captures d'écran]
 Recherche fonctionne après la modification du ProdcutSearch.
 ![1.1](images/1.1.png)
@@ -74,7 +88,7 @@ Etat de recherche avec debounce juste après l'insertion :
 Etat de recherche avec debounce après 1 second : 
 ![1.2](images/1.2 after.png)
 
-```
+
 
 ### Exercice 2 : Context et Internationalisation
 #### Objectif : Gérer les préférences de langue
