@@ -9,6 +9,7 @@ Ce TP a pour objectif de mettre en pratique l'utilisation des Hooks React (useSt
 git clone https://github.com/pr-daaif/tp-react-hooks.git
 cd tp-react-hooks
 ```
+![1](images/1.png)
 
 2. Créer votre propre dépôt sur Github et changer le remote :
 ```bash
@@ -21,16 +22,18 @@ git remote add origin https://github.com/[votre-username]/tp-react-hooks.git
 # Premier push
 git push -u origin main
 ```
-
+![2](images/2.png)
 3. Installer les dépendances :
 ```bash
 npm install
 ```
+![3](images/3.png)
 
 4. Lancer l'application :
 ```bash
 npm start
 ```
+![4](images/4.png)
 
 ## Instructions pour le TP
 
@@ -54,7 +57,23 @@ Pour chaque exercice :
 _Votre réponse pour l'exercice 1 :_
 ```
 Expliquez votre solution ici
+1.1 Mise à jour du composant ProductSearch pour permettre à l'utilisateur de saisir un terme de recherche. 
+Le terme de recherche est transmis du composant enfant ProductSearch au composant parent App via les props. 
+Utilisation de la fonction onChange sur l'élément <input> pour mettre à jour la valeur du searchTerm à chaque modification du champ.
+1.2 Implementation debounce pour retarder l'execution de la mise à jour de l'état searchItem après un delai de 1s, pour éviter déclenchement de la rechercher pour chaque caractère saisi.
+1.3
+   - Modification du composant ProductSearch : Le composant ProductSearch permet de saisir un terme de recherche. La valeur du champ de recherche est synchronisée avec l'état searchTerm du parent via les props. Chaque changement dans le champ met à jour cet état.
+   -Implémentation du debounce avec setTimeout : Pour éviter de déclencher une recherche trop fréquemment, j'ai implémenté un mécanisme de debounce dans ProductSearch. Chaque fois que l'utilisateur saisit un terme, un setTimeout est lancé pour attendre 500ms avant de mettre à jour le terme de recherche. Si un autre caractère est saisi avant la fin du délai, le setTimeout précédent est annulé et un nouveau délai commence.
+   -Utilisation de clearTimeout : Cette logique permet d'annuler le précédent délai à chaque modification dans le champ de recherche, garantissant ainsi que la recherche ne se déclenche que lorsque l'utilisateur cesse de taper pendant un certain temps.
 [Ajoutez vos captures d'écran]
+Recherche fonctionne après la modification du ProdcutSearch.
+![1.1](images/1.1.png)
+
+Etat de recherche avec debounce juste après l'insertion : 
+![1.2](images/1.2 before.png)
+Etat de recherche avec debounce après 1 second : 
+![1.2](images/1.2 after.png)
+
 ```
 
 ### Exercice 2 : Context et Internationalisation
