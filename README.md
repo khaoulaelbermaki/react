@@ -102,9 +102,9 @@ Recherche fonctionne après la modification du ProdcutSearch.
 ![1.1](images/1.1.png)
 
 Etat de recherche avec debounce juste après l'insertion : 
-![1.2](images/1.2 before.png)
+![1.2](images/1.2%20before.png)
 Etat de recherche avec debounce après 1 second : 
-![1.2](images/1.2 after.png)
+![1.2](images/1.2%20after.png)
 
 
 
@@ -117,9 +117,25 @@ Etat de recherche avec debounce après 1 second :
 
 _Votre réponse pour l'exercice 2 :_
 ```
-Expliquez votre solution ici
+Pour gérer les préférences de langue, j'ai utilisé le **Context API** de React.
+
+1. **Création du `LanguageContext`** :  
+   - J'ai créé un contexte `LanguageContext` dans un fichier `LanguageContext.js`.  
+   - Ce contexte fournit deux valeurs : `language` (la langue actuelle) et `changeLanguage` (une fonction pour mettre à jour la langue).  
+   - Le `LanguageProvider` est utilisé pour encapsuler l'application et rendre le contexte disponible à tous les composants.
+
+2. **Ajout du sélecteur de langue** :  
+   - Un composant `LanguageSelector` a été créé pour permettre à l'utilisateur de changer la langue.  
+   - Ce composant utilise le `LanguageContext` pour accéder à la langue actuelle et à la fonction `changeLanguage`.  
+   - Lorsque l'utilisateur sélectionne une langue, la fonction `changeLanguage` met à jour l'état du contexte, ce qui déclenche un re-rendu des composants dépendants.
+
 [Ajoutez vos captures d'écran]
 ```
+English version 
+![2.1](images/2.1.png)
+German version
+Etat de recherche avec debounce juste après l'insertion : 
+![2.2](images/2.2.png)
 
 ### Exercice 3 : Hooks Personnalisés
 #### Objectif : Créer des hooks réutilisables
