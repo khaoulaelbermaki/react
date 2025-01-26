@@ -62,23 +62,41 @@ Pour chaque exercice :
       -Utilisation de clearTimeout : Cette logique permet d'annuler le précédent délai à chaque modification dans le champ de recherche, garantissant ainsi que la recherche ne se déclenche que lorsque l'utilisateur cesse de taper pendant un certain temps.
 _Votre réponse pour l'exercice 1 :_
 ```
-Code dans ProductSearch :
-debouncedSearchTerm : Un état local est utilisé pour conserver temporairement le terme de recherche pendant que l'utilisateur tape.
-useEffect : Lorsqu'un utilisateur tape quelque chose, un setTimeout est mis en place. Si l'utilisateur continue à taper, l'ancien setTimeout est annulé, et un nouveau est créé. Cela garantit que la mise à jour du terme de recherche dans le composant parent n'a lieu qu'après une période d'inactivité de 1 seconde.
-clearTimeout : Cette fonction est utilisée pour annuler les appels précédents et éviter que plusieurs recherches soient effectuées pendant que l'utilisateur tape.
-ProductList
-Le composant ProductList affiche les produits filtrés en fonction du terme de recherche. La recherche est effectuée sur le titre du produit, et seuls les produits dont le titre contient le terme de recherche sont affichés.
+ProductSearch.js
 
-Code dans ProductList :
-Filtrage des produits : Le tableau des produits est filtré en fonction du searchTerm passé par le composant parent (App).
+   const ProductSearch = ({ searchTerm, setSearchTerm }) => // utilisé pros passé par le parent
 
-Code dans App :
-État searchTerm : Le terme de recherche est stocké dans l'état global (searchTerm) et est passé comme prop aux composants ProductSearch et ProductList.
+   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+
+   useEffect(()=>{
+      const timer = setTimeout(()=>{
+         setSearchTerm(debouncedSearchTerm);
+      },1000);
+      return ()=> clearTimeout(timer);
+   },[debouncedSearchTerm,setSearchTerm]); // retarder l'execution pour 1 seconde.
+
+   value={debouncedSearchTerm}
+   onChange={(e) => setDebouncedSearchTerm(e.target.value)} // mettre à jour onChange fonction
+   
+
+App.js
+
+   <ProductSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+   <ProductList searchTerm={searchTerm} />
+
+Prodcutlist.js
+
+const searchProducts = products.filter((product) =>
+   product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  ); // ajouter une fonction de recherche
+
+  searchProducts.map(product // map juste les produits recherchés.
+
+
 
 ```
 Expliquez votre solution ici
-1.2 
-1.3
+
 [Ajoutez vos captures d'écran]
 Recherche fonctionne après la modification du ProdcutSearch.
 ![1.1](images/1.1.png)
