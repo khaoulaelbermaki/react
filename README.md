@@ -132,10 +132,9 @@ Pour gérer les préférences de langue, j'ai utilisé le **Context API** de Rea
 [Ajoutez vos captures d'écran]
 ```
 English version 
-![2.1](images/2.1.png)
-German version
-Etat de recherche avec debounce juste après l'insertion : 
 ![2.2](images/2.2.png)
+German version
+![2.1](images/2.1.png)
 
 ### Exercice 3 : Hooks Personnalisés
 #### Objectif : Créer des hooks réutilisables
@@ -146,9 +145,21 @@ Etat de recherche avec debounce juste après l'insertion :
 
 _Votre réponse pour l'exercice 3 :_
 ```
+3.1 Le hook useDebounce permet de retarder l'exécution d'une action (comme une requête ou une mise à jour d'état) jusqu'à ce qu'une période de temps donnée se soit écoulée sans nouvelles modifications.
+3.2 Le hook useLocalStorage permet de gérer facilement des données dans le stockage local du navigateur. Il synchronise une valeur avec une clé dans localStorage pour garantir la persistance des données.
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
 ```
+Etat de recherche avec debounce juste après l'insertion : 
+![3.1](images/3.1.before.png)
+Etat de recherche avec debounce après 1 seconde : 
+![3.1](images/3.1.after.png)
+
+English version avec local Storage
+![3.2](images/3.2.png)
+
+De version avec local Storage
+![3.2](images/3.2.de.png)
 
 ### Exercice 4 : Gestion Asynchrone et Pagination
 #### Objectif : Gérer le chargement et la pagination
@@ -162,7 +173,7 @@ _Votre réponse pour l'exercice 4 :_
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
 ```
-
+3.1 re
 ## Rendu
 
 - Ajoutez l'URL de votre dépôt Github dans  **Classroom** et envoyer la réponse dès le démarage de votre projet.
