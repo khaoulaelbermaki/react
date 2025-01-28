@@ -174,5 +174,4 @@ L'ajout du button de recharge
 ![4.1](images/4.1.reload.png)
 
 Chargement lors du clique en recharge
-![4.1](images/4.1.reload.png)
-
+![4.1](images/4.1.loading.png)
