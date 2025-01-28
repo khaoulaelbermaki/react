@@ -16,6 +16,7 @@ const ProductList = ({ searchTerm }) => {
     products, 
     loading, 
     error,
+    reload,
     // TODO: Exercice 4.1 - Récupérer la fonction de rechargement
     // TODO: Exercice 4.2 - Récupérer les fonctions et états de pagination
   } = useProductSearch();
@@ -41,6 +42,11 @@ const ProductList = ({ searchTerm }) => {
   return (
     <div>
       {/* TODO: Exercice 4.1 - Ajouter le bouton de rechargement */}
+      <div className="d-flex justify-content-end mb-3">
+        <button onClick={reload} className="btn btn-primary">
+          Recharger
+        </button>
+      </div>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {searchProducts.map(product => (
           <div key={product.id} className="col">

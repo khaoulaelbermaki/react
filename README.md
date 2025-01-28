@@ -60,7 +60,6 @@ Pour chaque exercice :
       - Modification du composant ProductSearch : Le composant ProductSearch permet de saisir un terme de recherche. La valeur du champ de recherche est synchronisée avec l'état searchTerm du parent via les props. Chaque changement dans le champ met à jour cet état.
       -Implémentation du debounce avec setTimeout : Pour éviter de déclencher une recherche trop fréquemment, j'ai implémenté un mécanisme de debounce dans ProductSearch. Chaque fois que l'utilisateur saisit un terme, un setTimeout est lancé pour attendre 1s avant de mettre à jour le terme de recherche. Si un autre caractère est saisi avant la fin du délai, le setTimeout précédent est annulé et un nouveau délai commence.
       -Utilisation de clearTimeout : Cette logique permet d'annuler le précédent délai à chaque modification dans le champ de recherche, garantissant ainsi que la recherche ne se déclenche que lorsque l'utilisateur cesse de taper pendant un certain temps.
-_Votre réponse pour l'exercice 1 :_
 ```
 ProductSearch.js
 
@@ -95,9 +94,6 @@ const searchProducts = products.filter((product) =>
 
 
 ```
-Expliquez votre solution ici
-
-[Ajoutez vos captures d'écran]
 Recherche fonctionne après la modification du ProdcutSearch.
 ![1.1](images/1.1.png)
 
@@ -115,7 +111,6 @@ Etat de recherche avec debounce après 1 second :
 - [ ] 2.2 Ajouter le sélecteur de langue
 - [ ] 2.3 Documenter votre solution ici
 
-_Votre réponse pour l'exercice 2 :_
 ```
 Pour gérer les préférences de langue, j'ai utilisé le **Context API** de React.
 
@@ -129,7 +124,6 @@ Pour gérer les préférences de langue, j'ai utilisé le **Context API** de Rea
    - Ce composant utilise le `LanguageContext` pour accéder à la langue actuelle et à la fonction `changeLanguage`.  
    - Lorsque l'utilisateur sélectionne une langue, la fonction `changeLanguage` met à jour l'état du contexte, ce qui déclenche un re-rendu des composants dépendants.
 
-[Ajoutez vos captures d'écran]
 ```
 English version 
 ![2.2](images/2.2.png)
@@ -143,12 +137,9 @@ German version
 - [ ] 3.2 Créer le hook useLocalStorage
 - [ ] 3.3 Documenter votre solution ici
 
-_Votre réponse pour l'exercice 3 :_
 ```
 3.1 Le hook useDebounce permet de retarder l'exécution d'une action (comme une requête ou une mise à jour d'état) jusqu'à ce qu'une période de temps donnée se soit écoulée sans nouvelles modifications.
 3.2 Le hook useLocalStorage permet de gérer facilement des données dans le stockage local du navigateur. Il synchronise une valeur avec une clé dans localStorage pour garantir la persistance des données.
-Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
 ```
 Etat de recherche avec debounce juste après l'insertion : 
 ![3.1](images/3.1.before.png)
@@ -168,15 +159,20 @@ De version avec local Storage
 - [ ] 4.2 Implémenter la pagination
 - [ ] 4.3 Documenter votre solution ici
 
-_Votre réponse pour l'exercice 4 :_
 ```
-Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
-```
-3.1 re
-## Rendu
+4.1 Pour l'ajout du button de rechargement :
+- Deplacement du fetchProducts en dehors du hook useEffect afin qu'il puisse ètre réutilisé.
+- setLoading true : cela garantit que le spinner apparaît lors de la récupération des données, même pendant un rechargement.
+- une fois la récupération terminée ou échouée, setloading to false, garantissant un retour visuel précis.
+- en appelant fetchProducts, il actualise efficacement la liste des produits tout en affichant le spinner.
+- La fonction reload appelle désormais directement fetchProducts, garantissant qu'elle fonctionne sans dupliquer la logique.
+- appel useEffect : utilise toujours fetchProducts pour la récupération initiale des données lorsque le composant est monté.
+- Ajout button recharger au ProductList component.
 
-- Ajoutez l'URL de votre dépôt Github dans  **Classroom** et envoyer la réponse dès le démarage de votre projet.
-- Les push doivent se faire au fûr et à mesure que vous avancez dans votre projet.
-- Le README.md doit être à jour avec vos réponses et captures d'écran. 
-- Chaques exercice doit faire l'objet d'au moins un commit avec un message mentionnant le numéro de l'exercice.
+```
+L'ajout du button de recharge
+![4.1](images/4.1.reload.png)
+
+Chargement lors du clique en recharge
+![4.1](images/4.1.reload.png)
+
