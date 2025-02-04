@@ -5,14 +5,12 @@ import {useDebounce} from '../hooks/useProductSearch'
 const ProductSearch = ({ searchTerm, setSearchTerm }) => {
   const { isDarkTheme } = useContext(ThemeContext);
 
-  // TODO: Exercice 2.1 - Utiliser le LanguageContext
   const {language} = useContext(LanguageContext);
   const placeholderText = {
     fr:"Rechercher un produit...",
     en:"Search for a product...",
     de:"Suchen Sie nach einem Produkt",
   };
-  // TODO: Exercice 1.2 - Utiliser le hook useDebounce
   const [inpVal, setInpVal] = useState(searchTerm);
   const debouncedValue = useDebounce(inpVal, 2000);
 
@@ -25,7 +23,7 @@ const ProductSearch = ({ searchTerm, setSearchTerm }) => {
       <input
         type="text"
         value={inpVal}
-        onChange={(e) => setInpVal(e.target.value)} // met à jour searchItem dans le parent
+        onChange={(e) => setInpVal(e.target.value)}
         placeholder={placeholderText[language]}
         className={`form-control ${isDarkTheme ? 'bg-dark text-light' : ''}`}
       />

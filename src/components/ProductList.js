@@ -10,7 +10,6 @@ const ProductList = ({ searchTerm }) => {
     en: "Price: ",
     de: "Preis: ",
   };
-  // TODO: Exercice 2.1 - Utiliser le LanguageContext pour les traductions
   const { language } = useContext(LanguageContext);
   const { 
     products, 
@@ -21,13 +20,12 @@ const ProductList = ({ searchTerm }) => {
     totalPages,
     nextPage,
     previousPage 
-    // TODO: Exercice 4.1 - Récupérer la fonction de rechargement
-    // TODO: Exercice 4.2 - Récupérer les fonctions et états de pagination
+
   } = useProductSearch();
 
   const searchProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
-  ); // ajouter une fonction de recherche
+  ); 
   
   if (loading) return (
     <div className="text-center my-4">
@@ -45,7 +43,6 @@ const ProductList = ({ searchTerm }) => {
   
   return (
     <div>
-      {/* TODO: Exercice 4.1 - Ajouter le bouton de rechargement */}
       <div className="d-flex justify-content-end mb-3">
         <button onClick={reload} className="btn btn-primary">
           Recharger
@@ -76,7 +73,6 @@ const ProductList = ({ searchTerm }) => {
         ))}
       </div>
       
-      {/* TODO: Exercice 4.2 - Ajouter les contrôles de pagination */}
       <nav className="mt-4">
         <ul className="pagination justify-content-center">
           <li className="page-item">

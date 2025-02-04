@@ -5,7 +5,6 @@ import ThemeToggle from './components/ThemeToggle';
 import { LanguageProvider } from './contexts/LanguageContext';
 import LanguageSelector from './components/LanguageSelector';
 
-// TODO: Exercice 2.1 - Créer le LanguageContext
 
 export const ThemeContext = createContext();
 
@@ -15,7 +14,6 @@ const App = () => {
 
 
 
-  // TODO: Exercice 2.2 - Ajouter l'état pour la langue
 
   return (
     <LanguageProvider>
@@ -26,7 +24,6 @@ const App = () => {
           <h1 className="text-center">Catalogue de Produits</h1>
           <div className="d-flex justify-content-end gap-2">
             <ThemeToggle />
-            {/* TODO: Exercice 2.2 - Ajouter le sélecteur de langue */}
             <LanguageSelector/>
           </div>
         </header>
